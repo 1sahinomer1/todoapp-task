@@ -7,15 +7,22 @@ function useClickOutside(ref: any) {
      * Invoke Function onClick outside of element
      */
     function handleClickOutside(event: any) {
-      if (isActive && ref.current && !ref.current.contains(event.target)) {
+      console.log(event.target);
+      if (
+        event.target.nodeName !== 'BUTTON' &&
+        event.target.nodeName !== 'I' &&
+        isActive &&
+        ref.current &&
+        !ref.current.contains(event.target)
+      ) {
         setIsActive(!isActive);
       }
     }
     // Bind
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('click', handleClickOutside);
     return () => {
       // dispose
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('click', handleClickOutside);
     };
   }, [ref, isActive, setIsActive]);
   return [isActive, setIsActive] as const;
