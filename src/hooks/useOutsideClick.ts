@@ -19,10 +19,10 @@ function useClickOutside(ref: any) {
       }
     }
     // Bind
-    document.addEventListener('click', handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
       // dispose
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [ref, isActive, setIsActive]);
   return [isActive, setIsActive] as const;
