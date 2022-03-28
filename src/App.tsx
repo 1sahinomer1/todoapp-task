@@ -7,7 +7,6 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { Provider } from 'react-redux';
 import { store } from 'store';
 import { Home } from 'pages';
-import 'react-datepicker/dist/react-datepicker.css';
 function App() {
   const [theme, setTheme] = useState('light');
 
