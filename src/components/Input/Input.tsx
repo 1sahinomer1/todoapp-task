@@ -11,6 +11,7 @@ const Input = ({ placeholder, inputValue, setInputValue }: InputProps) => {
       placeholder={placeholder}
       type="text"
       value={inputValue}
+      data-testid="todoInput"
       onChange={(e) => setInputValue(e.target.value)}
     />
   );

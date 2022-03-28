@@ -2,10 +2,15 @@ import * as S from './styles';
 
 interface ButtonProps {
   children: string | any;
+  testid: string;
 }
 
-const Button = ({ children, ...props }: ButtonProps) => {
-  return <S.Button {...props}>{children}</S.Button>;
+const Button = ({ children, testid, ...props }: ButtonProps) => {
+  return (
+    <S.Button data-testid={testid} {...props}>
+      {children}
+    </S.Button>
+  );
 };
 
 export default Button;

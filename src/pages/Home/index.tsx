@@ -7,9 +7,10 @@ import {
   DropResult,
 } from 'react-beautiful-dnd';
 
-import DatePicker from 'react-datepicker';
 import { useEffect, useState } from 'react';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
+import DesktopDatePicker from '@mui/lab/DatePicker';
+import TextField from '@mui/material/TextField';
 
 import { useAppDispatch, useAppSelector } from 'store';
 import { addTask, orderTask } from 'store/taskSlice';
@@ -25,8 +26,7 @@ interface HomeProps {
 }
 
 const Home = ({ theme, setTheme }: HomeProps) => {
-  const [calendarDate, setCalendarDate] = useState(new Date());
-  const [datePickerShow, setDatePickerShow] = useState(false);
+  const [calendarDate, setCalendarDate] = useState<Date | null>(new Date());
   const [inputValue, setInputValue] = useState('');
   const state = useAppSelector((state) => state.tasks);
 
@@ -49,6 +49,9 @@ const Home = ({ theme, setTheme }: HomeProps) => {
     setInputValue('');
   };
   const onDragEnd = (result: DropResult) => {
+    if (!result.destination) {
+      return;
+    }
     state.days.forEach((day) => {
       if (day.date === dayjs(calendarDate).format('DD/MM/YYYY')) {
         const items = Array.from(day.todos);
@@ -66,33 +69,37 @@ const Home = ({ theme, setTheme }: HomeProps) => {
   return (
     <S.HomeContainer>
       <S.Header>
-        {datePickerShow ? (
-          <DatePicker
-            data-testid="calendar"
-            selected={calendarDate}
-            dateFormat="d MMMM yyyy"
-            inline
-            onChange={(date: Date) => {
-              setCalendarDate(date);
-              setDatePickerShow(false);
-            }}
-          />
-        ) : (
-          <S.DateInfo onClick={() => setDatePickerShow(true)}>
-            <S.Day>{dayjs(calendarDate).format('D')}</S.Day>
-            <S.MonthAndYear>
-              <S.Month>
-                {dayjs(calendarDate).format('MMM').toLocaleUpperCase()}
-              </S.Month>
-              <S.Year>
-                {dayjs(calendarDate).format('YYYY').toLocaleUpperCase()}
-              </S.Year>
-            </S.MonthAndYear>
-          </S.DateInfo>
-        )}
+        <DesktopDatePicker
+          label="Select Date"
+          value={calendarDate}
+          inputFormat={'dd/MM/yyyy'}
+          onChange={(newValue) => {
+            setCalendarDate(newValue);
+          }}
+          renderInput={(params) => (
+            <TextField
+              sx={{
+                svg: {
+                  color: '#3D82EB',
+                },
+                input: { color: '#3D82EB' },
+                label: { color: '#3D82EB' },
+              }}
+              {...params}
+            />
+          )}
+        />
         <S.Flex>
           <div onClick={themeToggler}>
-            {theme === 'dark' ? <Sun /> : <Moon />}
+            {theme === 'dark' ? (
+              <Button testid="sun">
+                <Sun />
+              </Button>
+            ) : (
+              <Button testid="moon">
+                <Moon />
+              </Button>
+            )}
           </div>
           <Dropdown />
         </S.Flex>
@@ -135,7 +142,7 @@ const Home = ({ theme, setTheme }: HomeProps) => {
           inputValue={inputValue}
           setInputValue={setInputValue}
         />
-        <Button>
+        <Button testid="todoAddButton">
           <AiOutlinePlusCircle cursor="pointer" size={25} color="#3D82EB" />
         </Button>
       </S.Form>

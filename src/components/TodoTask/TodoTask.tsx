@@ -1,5 +1,4 @@
 import dayjs from 'dayjs';
-import { DraggableProvided } from 'react-beautiful-dnd';
 import { AiFillInfoCircle, AiFillDelete } from 'react-icons/ai';
 import { MdDone } from 'react-icons/md';
 
@@ -25,7 +24,7 @@ const TodoTask = ({ todo }: TodoTaskProps) => {
     dispatch(deleteTask(days, todo.id));
   };
   return (
-    <S.TodoContainer id={todo.id} completed={todo.completed}>
+    <S.TodoContainer id={todo.id} completed={todo.completed} data-testid="todo">
       <S.Right>{todo.name}</S.Right>
       <S.Left>
         <S.Tooltip>
@@ -40,7 +39,7 @@ const TodoTask = ({ todo }: TodoTaskProps) => {
         >
           <MdDone size={20} color={todo.completed ? 'white' : '#3D82EB'} />
         </S.DoneContainer>
-        <S.DeleteButton onClick={deleteHandle}>
+        <S.DeleteButton data-testid="deleteTodo" onClick={deleteHandle}>
           <AiFillDelete size={30} cursor="pointer" color="white" />
         </S.DeleteButton>
       </S.Left>
