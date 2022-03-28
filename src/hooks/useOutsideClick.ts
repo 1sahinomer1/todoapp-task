@@ -7,10 +7,8 @@ function useClickOutside(ref: any) {
      * Invoke Function onClick outside of element
      */
     function handleClickOutside(event: any) {
-      console.log(event.target);
       if (
-        event.target.nodeName !== 'BUTTON' &&
-        event.target.nodeName !== 'I' &&
+        event.target.nodeName !== 'svg' &&
         isActive &&
         ref.current &&
         !ref.current.contains(event.target)
