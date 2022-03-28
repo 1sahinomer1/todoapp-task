@@ -9,7 +9,7 @@ This is React JS project with TypeScript.
 - You can rank them in order of importance to you.
 - You can use dark mode at night and light mode in the morning. Don't worry we will remember it for you.
 
-[Live Project](todoapp-task.vercel.app/)
+[Live Project](https://todoapp-task.vercel.app/)
 
 ## Screenshot
 
@@ -36,5 +36,5 @@ This is React JS project with TypeScript.
 - Test for Jest and React Testing Library
 - Redux Toolkit for State management
 - React beatiful dnd for Drag and drop
-- uuid for unique ids 
-- Material UI for Date component  
+- uuid for unique ids
+- Material UI for Date component
