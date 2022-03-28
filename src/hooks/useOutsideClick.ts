@@ -1,19 +1,24 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-const useOutsideClick = (ref: any, callback: any) => {
-  const handleClick = (e: any) => {
-    if (ref.current && !ref.current.contains(e.target)) {
-      callback();
-    }
-  };
-
+function useClickOutside(ref: any) {
+  const [isActive, setIsActive] = useState(false);
   useEffect(() => {
-    document.addEventListener('click', handleClick);
-
+    /**
+     * Invoke Function onClick outside of element
+     */
+    function handleClickOutside(event: any) {
+      if (isActive && ref.current && !ref.current.contains(event.target)) {
+        setIsActive(!isActive);
+      }
+    }
+    // Bind
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener('click', handleClick);
+      // dispose
+      document.removeEventListener('mousedown', handleClickOutside);
     };
-  });
-};
+  }, [ref, isActive, setIsActive]);
+  return [isActive, setIsActive] as const;
+}
 
-export default useOutsideClick;
+export default useClickOutside;

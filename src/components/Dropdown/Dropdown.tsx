@@ -9,18 +9,15 @@ import { useOutsideClick } from 'hooks';
 import * as S from './styles';
 
 const Dropdown = () => {
-  const [isActive, setIsActive] = useState(false);
   const ref = useRef();
   const days = useAppSelector((state) => state.tasks.days);
   const dispatch = useAppDispatch();
+  const [isActive, setIsActive] = useOutsideClick(ref);
 
   const RemoveAll = () => {
     setIsActive(!isActive);
     dispatch(deleteAllTasks(days));
   };
-  useOutsideClick(ref, () => {
-    if (isActive) setIsActive(false);
-  });
 
   return (
     <S.Dropdown>
