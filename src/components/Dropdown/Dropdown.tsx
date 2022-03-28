@@ -30,7 +30,7 @@ const Dropdown = () => {
       <S.DropdownContent ref={ref}>
         {isActive && (
           <S.DropdownItem onClick={RemoveAll}>
-            Delete all today's tasks
+            Delete all completed tasks for today
           </S.DropdownItem>
         )}
       </S.DropdownContent>
