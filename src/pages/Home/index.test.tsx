@@ -45,19 +45,16 @@ describe('home test', () => {
     const todo = await screen.findAllByTestId('todo');
     expect(todo[0]).toHaveTextContent('Write Test');
   });
-  //   it('remove todo', async () => {
-  //     await waitFor(() => {
-  //       setup();
-  //     });
-  //     const addTodoInput = screen.getByTestId('todoInput');
-  //     userEvent.type(addTodoInput, 'Task One');
-  //     const todoAddButton = await screen.findByTestId('todoAddButton');
-  //     userEvent.click(todoAddButton);
-  //     userEvent.type(addTodoInput, 'Task Two');
-  //     userEvent.click(todoAddButton);
-  //     const todo = await screen.findAllByTestId('todo');
-  //     const todoDeleteButton = await screen.findAllByTestId('deleteTodo');
-  //     userEvent.click(todoDeleteButton[0]);
-  //     expect(todo[0]).toHaveTextContent('Task Two');
-  //   });
+  it('remove todo', async () => {
+    await waitFor(() => {
+      setup();
+    });
+
+    // userEvent.type(addTodoInput, 'Task Two');
+    // userEvent.click(todoAddButton);
+    // const todo = await screen.findAllByTestId('todo');
+    const todoDeleteButton = await screen.findByTestId('deleteTodo');
+    userEvent.click(todoDeleteButton);
+    // screen.debug(undefined, 300000);
+  });
 });
