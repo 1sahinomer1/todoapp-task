@@ -72,6 +72,7 @@ const Home = ({ theme, setTheme }: HomeProps) => {
         <DesktopDatePicker
           label="Select Date"
           value={calendarDate}
+          minDate={new Date()}
           inputFormat={'dd/MM/yyyy'}
           onChange={(newValue) => {
             setCalendarDate(newValue);
