@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
-import { AiFillInfoCircle, AiFillDelete } from 'react-icons/ai';
 import { MdDone } from 'react-icons/md';
-
+import { CgTrash } from 'react-icons/cg';
+import { ImInfo } from 'react-icons/im';
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from 'store';
 import { deleteTask, updatedTask } from 'store/taskSlice';
@@ -28,7 +28,7 @@ const TodoTask = ({ todo }: TodoTaskProps) => {
       <S.Right>{todo.name}</S.Right>
       <S.Left>
         <S.Tooltip>
-          <AiFillInfoCircle size={25} />
+          <ImInfo size={25} />
           <S.TooltipText>
             was created {dayjs(todo.createdTime).format('HH:mm')}
           </S.TooltipText>
@@ -40,7 +40,7 @@ const TodoTask = ({ todo }: TodoTaskProps) => {
           <MdDone size={20} color={todo.completed ? 'white' : '#3D82EB'} />
         </S.DoneContainer>
         <S.DeleteButton data-testid="deleteTodo" onClick={deleteHandle}>
-          <AiFillDelete size={30} cursor="pointer" color="white" />
+          <CgTrash size={30} cursor="pointer" color="white" />
         </S.DeleteButton>
       </S.Left>
     </S.TodoContainer>
