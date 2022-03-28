@@ -34,7 +34,7 @@ This is React JS project with TypeScript.
 - Styled-components for styles
 - Icons for SVGR
 - Test for Jest and React Testing Library
-- State management for Redux Toolkit
-- Drag and drop for React beatiful dnd
-- Unique ids for uuid
-- Date component for Material UI
+- Redux Toolkit for State management
+- React beatiful dnd for Drag and drop
+- uuid for unique ids 
+- Material UI for Date component  
