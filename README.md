@@ -33,7 +33,7 @@ This is React JS project with TypeScript.
 - TypeScript
 - Styled-components for styles
 - Icons for SVGR
-- Test for Jest and React Testing Library
+- Jest and React Testing Library for Test
 - Redux Toolkit for State management
 - React beatiful dnd for Drag and drop
 - uuid for unique ids
