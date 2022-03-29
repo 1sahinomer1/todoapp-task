@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { FiMoreHorizontal } from 'react-icons/fi';
 
 import { useAppDispatch, useAppSelector } from 'store';

@@ -91,7 +91,7 @@ const Home = ({ theme, setTheme }: HomeProps) => {
           )}
         />
         <S.Flex>
-          <div onClick={themeToggler}>
+          <S.ThemeIcon onClick={themeToggler}>
             {theme === 'dark' ? (
               <Button testid="sun">
                 <Sun />
@@ -101,7 +101,7 @@ const Home = ({ theme, setTheme }: HomeProps) => {
                 <Moon />
               </Button>
             )}
-          </div>
+          </S.ThemeIcon>
           <Dropdown />
         </S.Flex>
       </S.Header>

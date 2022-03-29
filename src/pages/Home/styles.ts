@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { breakpoints } from 'theme';
 
 export const HomeContainer = styled.div`
   width: 45%;
@@ -11,6 +12,9 @@ export const HomeContainer = styled.div`
   box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   position: relative;
+  @media ${breakpoints.xl} {
+    width: 80%;
+  }
 `;
 
 export const Header = styled.div`
@@ -21,28 +25,10 @@ export const Header = styled.div`
   margin-bottom: 50px;
 `;
 
-export const DateInfo = styled.div`
-  display: flex;
-  color: ${(p) => p.theme.primaryColor};
-  cursor: pointer;
-`;
-
-export const Day = styled.p`
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 700;
-`;
-
-export const MonthAndYear = styled.section`
-  margin-left: 10px;
-`;
-
-export const Month = styled.p`
-  font-size: 16px;
-`;
-
-export const Year = styled.p`
-  font-size: 16px;
+export const ThemeIcon = styled.div`
+  @media ${breakpoints.xl} {
+    margin-left: 10px;
+  }
 `;
 
 export const Flex = styled.div`

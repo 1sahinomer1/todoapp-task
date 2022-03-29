@@ -1,8 +1,13 @@
 import styled from 'styled-components';
+import { breakpoints } from 'theme';
 
 export const Dropdown = styled.div`
   padding: 10px 17px;
   position: relative;
+  @media ${breakpoints.xl} {
+    padding: 0;
+    margin-left: 10px;
+  }
 `;
 
 export const DropdownButton = styled.button`
@@ -28,6 +33,12 @@ export const DropdownContent = styled.div<ContentProps>`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  @media ${breakpoints.xl} {
+    top: 150%;
+  }
+  @media ${breakpoints.sm} {
+    right: 10%;
+  }
 `;
 
 export const DropdownItem = styled.button`
@@ -45,4 +56,7 @@ export const DropdownItem = styled.button`
   border-radius: 10px;
   padding: 10px;
   color: white;
+  @media ${breakpoints.sm} {
+    font-size: 10px;
+  }
 `;
